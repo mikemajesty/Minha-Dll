@@ -26,7 +26,7 @@ namespace Mike.Utilities.Desktop
                 throw new CustomException(Erro.Message);
             }
 
-        }
+        }        
         //public static string MyTernaryCustomExceptionString(string erroMessage = "Erro não foi atribuido")
         //{
         //    try

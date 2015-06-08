@@ -47,6 +47,7 @@
     <Compile Include="DialogCustom.cs" />
     <Compile Include="DialogMessage.cs" />
     <Compile Include="FieldCase.cs" />
+    <Compile Include="InjectionMethod.cs" />
     <Compile Include="MyErro.cs" />
     <Compile Include="OpenMdiForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
