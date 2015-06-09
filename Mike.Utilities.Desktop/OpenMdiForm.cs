@@ -48,19 +48,20 @@ namespace Mike.Utilities.Desktop
         /// Abre um form chamado usando o metodo Show
         /// </summary>
         /// <param name="formParaAbrir">Form que sera aberto</param>
-        public static void OpenForWithShow(Form formParaAbrir)
+        public static void OpenForWithShow(Form formParaAbrir,Form formParaFechar)
         {
-            Form formulario = formParaAbrir;
-            formulario.Show();
+            formParaAbrir.Show();
+            formParaFechar.Hide();
         }
         /// <summary>
         /// Abre um form chamado usando o metodo ShowDialog
         /// </summary>
         /// <param name="formParaAbrir">Form que sera aberto</param>
-        public static void OpenForWithShowDialog(Form formParaAbrir)
+        public static DialogResult OpenForWithShowDialog(Form formParaAbrir)
         {
             Form formulario = formParaAbrir;
-            formulario.ShowDialog();
+            return formulario.ShowDialog();
         }
+      
     }
 }

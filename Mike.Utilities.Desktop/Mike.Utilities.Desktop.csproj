@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdapterScreen.cs" />
-    <Compile Include="Carrinho.cs" />
     <Compile Include="CustomException.cs" />
     <Compile Include="DialogCustom.cs" />
     <Compile Include="DialogMessage.cs" />
