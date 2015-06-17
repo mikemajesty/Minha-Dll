@@ -62,6 +62,10 @@ namespace Mike.Utilities.Desktop
             Form formulario = formParaAbrir;
             return formulario.ShowDialog();
         }
-      
+        public static void OpenAndCloseNoMdi(Form formParaAbrir, Form formParaFechar)
+        {
+            formParaAbrir.Show();
+            formParaFechar.Close();
+        }
     }
 }

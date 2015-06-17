@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdapterScreen.cs" />
+    <Compile Include="Calcular.cs" />
     <Compile Include="CustomException.cs" />
     <Compile Include="DialogCustom.cs" />
     <Compile Include="DialogMessage.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="OpenMdiForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveInFile.cs" />
+    <Compile Include="TamanhoGrid.cs" />
     <Compile Include="ToXml.cs" />
     <Compile Include="SaveErroInTxt.cs" />
     <Compile Include="ValidatorField.cs" />

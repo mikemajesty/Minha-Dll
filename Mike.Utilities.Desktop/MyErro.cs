@@ -8,11 +8,11 @@ namespace Mike.Utilities.Desktop
     {
         public static Exception MyException(string erroMessage = "Erro não foi atribuido")
         {
-            return new Exception(erroMessage);
+            throw new Exception(erroMessage);
         }
         public static CustomException MyCustomException(string erroMessage = "Erro não foi atribuido")
         {
-            return new CustomException(erroMessage);
+            throw new CustomException(erroMessage);
         }
         public static string MyTernaryExceptionString(string erroMessage = "Erro não foi atribuido")
         {
