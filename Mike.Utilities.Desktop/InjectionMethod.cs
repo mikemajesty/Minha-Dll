@@ -10,6 +10,10 @@ namespace Mike.Utilities.Desktop
         {
             return data.ToString("dd/MM/yyyy HH:mm:ss");
         }
+        public static string ToDataCertaSemHora(this DateTime data)
+        {
+            return data.ToString("dd/MM/yyyy");
+        }
         public static bool RetornaErro(this bool retorno, string erro)
         {
             throw new CustomException(erro);

@@ -41,14 +41,22 @@ namespace Mike.Utilities.Desktop
         {
             try
             {
+                
 
-                int index = txt.Text.LastIndexOf(',');
-                string resultado = txt.Text.Substring(0, index);
-                if (resultado.Contains('.'))
+                if (txt.Text.Contains(",")||txt.Text.Contains("%")||txt.Text.Contains("."))
                 {
-                    resultado = resultado.Replace(".", "");
+                    int index = txt.Text.LastIndexOf(',');
+                    string resultado = txt.Text.Substring(0, index);
+                    if (resultado.Contains('.'))
+                    {
+                        resultado = resultado.Replace(".", "");
+                    }
+                    return Convert.ToInt32(resultado);
                 }
-                return Convert.ToInt32(resultado);
+                else
+                {
+                    return Convert.ToInt32(txt.Text);
+                }
             }
             catch (CustomException erro)
             {

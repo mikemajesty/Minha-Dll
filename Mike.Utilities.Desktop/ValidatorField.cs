@@ -12,8 +12,10 @@ namespace Mike.Utilities.Desktop
         /// <param name="e">KeyPressEventArgs referente ao evento do metodo</param>
         public static void Money(KeyPressEventArgs e)
         {
+
             if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)44)
             {
+
                 e.Handled = true;
             }
         }
@@ -51,13 +53,25 @@ namespace Mike.Utilities.Desktop
                 e.Handled = true;
             }
         }
+        public static void NoVirgula(KeyPressEventArgs e,object sender)
+        {
+            if (e.KeyChar == '.' || e.KeyChar == ',')
+            {
+                e.KeyChar = ',';
+
+                //Verifica se já existe alguma vírgula na string
+                if ((sender as TextBox).Text.Contains(",") || (sender as TextBox).Text.Length == 0)
+                    e.Handled = true; // Caso exista, aborte 
+
+            }
+          
+        }
 
 
-      
-        
-		
+
+
     }
 
- 
-		
+
+
 }
