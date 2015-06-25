@@ -55,13 +55,25 @@ namespace Mike.Utilities.Desktop
             }
 
         }
-        public static int ErroCustomForTernary(this int number,string erro)
+        public static int ErroCustomForTernary(this int number, string erro)
         {
             throw new CustomException(erro);
-        } 
-         public static void EsconderColuna(this DataGridView dgv,string comunName)
+        }
+        public static void EsconderColuna(this DataGridView dgv, string comunName)
         {
             dgv.Columns[comunName].Visible = false;
-        } 
+        }
+        public static void LimparTxtNoEventoChanged(this TextBox txt, EventHandler evento)
+        {
+            txt.TextChanged -= evento;
+            txt.Clear();
+            txt.TextChanged += evento;
+        }
+        public static void LimparTxt(this TextBox txt)
+        {
+          
+            txt.Text = string.Empty;
+            
+        }
     }
 }

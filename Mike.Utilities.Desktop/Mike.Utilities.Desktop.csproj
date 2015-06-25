@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdapterScreen.cs" />
+    <Compile Include="Calculadora.cs" />
     <Compile Include="Calcular.cs" />
     <Compile Include="CustomException.cs" />
     <Compile Include="DialogCustom.cs" />
