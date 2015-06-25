@@ -59,6 +59,9 @@ namespace Mike.Utilities.Desktop
         {
             throw new CustomException(erro);
         } 
-       
+         public static void EsconderColuna(this DataGridView dgv,string comunName)
+        {
+            dgv.Columns[comunName].Visible = false;
+        } 
     }
 }

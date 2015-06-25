@@ -46,16 +46,21 @@
     <Compile Include="CustomException.cs" />
     <Compile Include="DialogCustom.cs" />
     <Compile Include="DialogMessage.cs" />
+    <Compile Include="GerenciarEstoque.cs" />
     <Compile Include="FieldCase.cs" />
     <Compile Include="InjectionMethod.cs" />
+    <Compile Include="GerenciarControles.cs" />
     <Compile Include="MyErro.cs" />
+    <Compile Include="MyListView.cs" />
     <Compile Include="OpenMdiForm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveInFile.cs" />
     <Compile Include="TamanhoGrid.cs" />
     <Compile Include="ToXml.cs" />
     <Compile Include="SaveErroInTxt.cs" />
+    <Compile Include="Troco.cs" />
     <Compile Include="ValidatorField.cs" />
+    <Compile Include="ValorPago.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
