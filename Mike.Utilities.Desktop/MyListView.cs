@@ -152,6 +152,41 @@ namespace Mike.Utilities.Desktop
             }
 
         }
+
+        public static List<BaixarEstoque> RetornarValoresParaDarBaixaNoEstoque(ListView ltv, 
+            int indiceDoCodigo = 1, 
+            int indexDaQuantidade = 2,
+            int indexDoValorTotal = 3,
+            int indexDoLucroTotal = 4)
+        {
+            try
+            {
+                List<BaixarEstoque> estoqueList = new List<BaixarEstoque>();
+                foreach (ListViewItem lstItem in ltv.Items)
+                {
+                    estoqueList.Add(new BaixarEstoque()
+                    {
+                        Codigo = lstItem.SubItems[1].Text,
+                        Quantidade = lstItem.SubItems[2].Text != "Peso" ? Convert.ToInt32(lstItem.SubItems[2].Text) : 0,
+                        LucroTotal = decimal.Parse(lstItem.SubItems[4].Text),
+                        ValorTotal = decimal.Parse(lstItem.SubItems[3].Text)
+                    });
+
+                }
+
+                return estoqueList;
+
+            }
+            catch (CustomException erro)
+            {
+                throw new CustomException(erro.Message);
+            }
+            catch (Exception erro)
+            {
+                throw new Exception(erro.Message);
+            }
+
+        }
         /*private static void AdicionarItensNoListView(ListView ltv, IQueryable<dynamic> _venda)
         {
 

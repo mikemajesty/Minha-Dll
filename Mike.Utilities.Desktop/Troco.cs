@@ -11,8 +11,19 @@ namespace Mike.Utilities.Desktop
 
             try
             {
+            
 
-                return  (valorPago - valorDaComanda).ToString("C2");
+                decimal retorno = 0;
+                if (valorPago == 0)
+                {
+                    return retorno.ToString("C2");
+                }
+                if (valorPago >= valorDaComanda )
+                {
+                    retorno =  (valorPago - valorDaComanda);
+                }
+
+                return retorno.ToString("C2");
 
             }
             catch (CustomException erro)
