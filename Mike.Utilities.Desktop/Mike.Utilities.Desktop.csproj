@@ -48,10 +48,12 @@
     <Compile Include="CustomException.cs" />
     <Compile Include="DialogCustom.cs" />
     <Compile Include="DialogMessage.cs" />
+    <Compile Include="Espere.cs" />
     <Compile Include="GerenciarEstoque.cs" />
     <Compile Include="FieldCase.cs" />
     <Compile Include="InjectionMethod.cs" />
     <Compile Include="GerenciarControles.cs" />
+    <Compile Include="LinhaDoGrid.cs" />
     <Compile Include="MyErro.cs" />
     <Compile Include="MyListView.cs" />
     <Compile Include="OpenMdiForm.cs" />

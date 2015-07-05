@@ -67,7 +67,14 @@ namespace Mike.Utilities.Desktop
           
         }
 
+        public static void NoSpace(KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Space)
+            {
+                e.Handled = true;
+            }
 
+        }
 
 
     }

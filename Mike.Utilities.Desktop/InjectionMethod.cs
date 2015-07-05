@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Linq;
 using System.Collections.Generic;
+using System.Drawing;
 namespace Mike.Utilities.Desktop
 {
     public static class InjectionMethod
@@ -52,6 +53,8 @@ namespace Mike.Utilities.Desktop
             foreach (var item in tamanhoGrid)
             {
                 dgv.Columns[item.ColunaNome].Width = item.Tamanho;
+
+
             }
 
         }
@@ -71,9 +74,74 @@ namespace Mike.Utilities.Desktop
         }
         public static void LimparTxt(this TextBox txt)
         {
-          
+
             txt.Text = string.Empty;
-            
+
         }
+        public static void EsconderLinhaComUmaCor(this DataGridView dgv, Color color, string coluna)
+        {
+
+            try
+            {
+                foreach (DataGridViewRow row in dgv.Rows)
+                {
+
+                    if (Convert.ToDecimal(row.Cells["Preço"].Value) <= 0)
+                    {
+                        row.Cells[coluna].Style.SelectionBackColor = color;
+                        row.Cells[coluna].Style.SelectionForeColor = color;
+                        row.Cells[coluna].Style.BackColor = color;
+                        row.Cells[coluna].Style.ForeColor = color;
+                    }
+
+                }
+            }
+            catch (CustomException erro)
+            {
+                throw new CustomException(erro.Message);
+            }
+            catch (Exception erro)
+            {
+                throw new Exception(erro.Message);
+            }
+
+        }
+        public static DateTime DataNoFormatoDate(this DateTime dtt)
+        {
+            return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+        }
+        private static LinhaDoGrid GetInformacoesDoGrid(DataGridView dgv)
+        {
+
+            try
+            {
+                LinhaDoGrid linhaDoGrid = null;
+                if (dgv.Rows.Count > 0)
+                {
+
+                    for (int contador = 0; contador < dgv.Rows.Count; ++contador)
+                    {
+                        linhaDoGrid = new LinhaDoGrid()
+                        {
+                            LucroTotal = Convert.ToDecimal(dgv.Rows[contador].Cells[1].Value),
+                            ValorTotal = Convert.ToDecimal(dgv.Rows[contador].Cells[0].Value),
+                            Quantidade = Convert.ToInt32(dgv.Rows[contador].Cells[2].Value)
+                        };
+                    }
+                }
+                return linhaDoGrid;
+            }
+            catch (CustomException erro)
+            {
+                throw new CustomException(erro.Message);
+            }
+            catch (Exception erro)
+            {
+                throw new Exception(erro.Message);
+            }
+
+
+        }
+
     }
 }
