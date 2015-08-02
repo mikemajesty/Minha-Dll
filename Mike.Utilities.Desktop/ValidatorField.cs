@@ -53,7 +53,7 @@ namespace Mike.Utilities.Desktop
                 e.Handled = true;
             }
         }
-        public static void NoVirgula(KeyPressEventArgs e,object sender)
+        public static void NoVirgula(KeyPressEventArgs e, object sender)
         {
             if (e.KeyChar == '.' || e.KeyChar == ',')
             {
@@ -64,7 +64,7 @@ namespace Mike.Utilities.Desktop
                     e.Handled = true; // Caso exista, aborte 
 
             }
-          
+
         }
 
         public static void NoSpace(KeyPressEventArgs e)
@@ -75,10 +75,43 @@ namespace Mike.Utilities.Desktop
             }
 
         }
+        public static void Peso(KeyPressEventArgs e, object sender)
+        {
+
+            if ((sender as TextBox).Text.Length <= 5)
+            {
 
 
+                string n = string.Empty;
+                double v = 0;
+
+                n = (sender as TextBox).Text.Replace(",", "").Replace(".", "");
+                if (n.Equals(""))
+                    n = "00";
+
+                n = n.PadLeft(4, '0');
+                if (n.Length < 3 & n.Substring(0, 1) == "0")
+                    n = n.Substring(1, n.Length - 1);
+
+                v = Convert.ToDouble(n) / 100;
+                (sender as TextBox).Text = string.Format("{0:N2}", v);
+                (sender as TextBox).SelectionStart = (sender as TextBox).Text.Length;
+            }
+        }
+        public static void MoneyTeste(KeyPressEventArgs e, object sender)
+        {
+
+            if ((sender as TextBox).Text.Contains(","))
+            {
+                if ((sender as TextBox).Text.IndexOf(" ") != -1)
+                {
+                    var money = (sender as TextBox).Text.Substring(0, (sender as TextBox).Text.IndexOf(" ") - 1);
+                    (sender as TextBox).Text = String.Format("{0:D0}", money);
+                }
+                (sender as TextBox).Text = ""; // Tod
+            }
+        }
     }
-
 
 
 }

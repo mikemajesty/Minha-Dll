@@ -1,32 +1,65 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Mike.Utilities.Desktop
 {
-    public static class Espere
+    public class Espere
     {
+        private CancellationTokenSource ReferenciarNoCancellationToken { get; set; }
+        public CancellationToken Cancel { get; set; }
 
-        private static CancellationTokenSource ReferenciarNoCancellationToken()
+        public Espere()
         {
-            var ts = new CancellationTokenSource();
-            return ts;
+            ReferenciarNoCancellationToken = new CancellationTokenSource();
+            Cancel = ReferenciarNoCancellationToken.Token;
         }
-        public static CancellationToken ReferenciarNoTask()
+        private CancellationToken ReferenciarNoTask()
         {
+            try
+            {
+                CancellationToken ct = ReferenciarNoCancellationToken.Token;
+                return ct;
+            }
+            catch (Exception erro)
+            {
 
-            CancellationToken ct = ReferenciarNoCancellationToken().Token;
-            return ct;
+                throw new Exception(erro.Message);
+            }
+         
         }
 
-        public static void CancelarTask()
+        public void CancelarTask()
         {
-            ReferenciarNoCancellationToken().Cancel();
+            try
+            {
+                ReferenciarNoCancellationToken.Cancel();
+            }
+            catch (Exception erro)
+            {
+
+                throw new Exception(erro.Message);
+            }
+           
+        }
+        public void Start(Action action)
+        {
+            try
+            {
+                Control.CheckForIllegalCrossThreadCalls = false;
+                new Task(action, Cancel).Start();
+            }
+            catch (Exception erro)
+            {
+                
+                throw new Exception(erro.Message);
+            }
+          
         }
 
 
 
 
-      
     }
 }

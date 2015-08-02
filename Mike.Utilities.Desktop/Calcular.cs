@@ -11,20 +11,23 @@ namespace Mike.Utilities.Desktop
             try
             {
                 decimal _precoVenda = 0, _preconCompra = 0;
-                string retorno = "0%";
-                if (txtPrecoVenda.Text.Length > 0 && txtPrecoCompra.Text.Length > 0)
+                string retorno = "00";
+
+                if (txtPrecoVenda.Text.Trim().Length > 0 && txtPrecoCompra.Text.Trim().Length > 0)
                 {
                     _precoVenda = Convert.ToDecimal(txtPrecoVenda.Text);
                     _preconCompra = Convert.ToDecimal(txtPrecoCompra.Text);
-                    decimal porcentagem = 0;
-                    porcentagem = _precoVenda / _preconCompra * 100;
+                    decimal porcentagemDecimal = 0;
+                    porcentagemDecimal = _precoVenda / _preconCompra * 100;
+                    int porcentagem = Convert.ToInt32(porcentagemDecimal);
+                    decimal.Floor(porcentagem);
                     if (_precoVenda > _preconCompra)
                     {
-                        retorno = string.Format("{0:N2}%", porcentagem).Length == 1 ? "0" : string.Format("{0:N2}%", porcentagem);
-                    }
-                }
-                return retorno;
+                        retorno = string.Format("{0}", porcentagem).Length == 1 ? "0" : string.Format("{0}", porcentagem);
 
+                    }
+                }  
+                return retorno;
             }
             catch (CustomException erro)
             {

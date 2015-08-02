@@ -78,22 +78,37 @@ namespace Mike.Utilities.Desktop
             txt.Text = string.Empty;
 
         }
-        public static void EsconderLinhaComUmaCor(this DataGridView dgv, Color color, string coluna)
+        /*public static void EsconderLinhaComUmaCor(this DataGridView dgv, Color color, string coluna)
         {
 
             try
             {
+                int contador = 0;
                 foreach (DataGridViewRow row in dgv.Rows)
                 {
-
-                    if (Convert.ToDecimal(row.Cells["Preço"].Value) <= 0)
+                    if (Convert.ToInt32(row.Cells["Preço"].Value) <= 0)
                     {
-                        row.Cells[coluna].Style.SelectionBackColor = color;
-                        row.Cells[coluna].Style.SelectionForeColor = color;
-                        row.Cells[coluna].Style.BackColor = color;
-                        row.Cells[coluna].Style.ForeColor = color;
+                        dgv.Rows[contador].Cells["Preço"].Style.BackColor = Color.Yellow;
+                        dgv.Rows[contador].Cells["Preço"].Style.ForeColor = Color.Yellow;
+                        dgv.Rows[contador].Cells["Preço"].Style.SelectionBackColor = Color.Yellow;
+                        dgv.Rows[contador].Cells["Preço"].Style.SelectionForeColor = Color.Yellow;
+                        //dgv.Rows[contador].Cells["Estoque"].Style.BackColor = Color.Yellow;
+                        //dgv.Rows[contador].Cells["Estoque"].Style.ForeColor = Color.Yellow;
+                        //dgv.Rows[contador].Cells["Estoque"].Style.SelectionBackColor = Color.Yellow;
+                        //dgv.Rows[contador].Cells["Estoque"].Style.SelectionForeColor = Color.Yellow;
                     }
-
+                    else
+                    {
+                        dgv.Rows[contador].Cells["Preço"].Style.BackColor = Color.White;
+                        dgv.Rows[contador].Cells["Preço"].Style.ForeColor = Color.Black;
+                        dgv.Rows[contador].Cells["Preço"].Style.SelectionBackColor = Color.Yellow;
+                        dgv.Rows[contador].Cells["Preço"].Style.SelectionForeColor = Color.Black;
+                        //dgv.Rows[contador].Cells["Estoque"].Style.BackColor = Color.White;
+                        //dgv.Rows[contador].Cells["Estoque"].Style.ForeColor = Color.Black;
+                        //dgv.Rows[contador].Cells["Estoque"].Style.SelectionBackColor = Color.Yellow;
+                        //dgv.Rows[contador].Cells["Estoque"].Style.SelectionForeColor = Color.Black;
+                    }
+                    contador++;
                 }
             }
             catch (CustomException erro)
@@ -105,7 +120,7 @@ namespace Mike.Utilities.Desktop
                 throw new Exception(erro.Message);
             }
 
-        }
+        }*/
         public static DateTime DataNoFormatoDate(this DateTime dtt)
         {
             return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);

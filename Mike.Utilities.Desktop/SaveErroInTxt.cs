@@ -15,6 +15,7 @@ namespace Mike.Utilities.Desktop
         {
             try
             {
+              
                 return true;
             }
             catch (Exception Erro)

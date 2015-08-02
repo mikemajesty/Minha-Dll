@@ -9,9 +9,9 @@ namespace Mike.Utilities.Desktop
         /// </summary>
         /// <param name="formAtual">O form pai, o form que fez a chamada</param>
         /// <param name="formParaAbri">o form filho, que sera aberto pelo pai</param>
-        public static void LoadNewFormCloseAnother(Form formAtual,Form formParaAbri)
+        public static void LoadNewFormCloseAnother(Form formAtual, Form formParaAbri)
         {
-           
+
             foreach (Form item in Application.OpenForms)
             {
                 if (item.IsMdiChild)
@@ -48,7 +48,7 @@ namespace Mike.Utilities.Desktop
         /// Abre um form chamado usando o metodo Show
         /// </summary>
         /// <param name="formParaAbrir">Form que sera aberto</param>
-        public static void OpenForWithShow(Form formParaAbrir,Form formParaFechar)
+        public static void OpenForWithShow(Form formParaAbrir, Form formParaFechar)
         {
             formParaAbrir.Show();
             formParaFechar.Hide();
@@ -67,5 +67,6 @@ namespace Mike.Utilities.Desktop
             formParaAbrir.Show();
             formParaFechar.Close();
         }
+      
     }
 }
