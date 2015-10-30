@@ -75,6 +75,32 @@ namespace Mike.Utilities.Desktop
             }
 
         }
+        public static void AllowOneSpaceTogether(KeyPressEventArgs e, object sender)
+        {
+            TextBox tb = (TextBox)sender;
+            if ((e.KeyChar == ' ') && (tb.Text.Length > 0))
+            {
+                if (tb.Text[tb.Text.Length - 1] == ' ')
+                    e.Handled = true;
+            }
+        }
+        /// <summary>
+        /// Desabilita o tab no datagridview, esse evento tem que ser chamado no KeyDown
+        /// </summary>
+        /// <param name="sender">o próprio datagridview, como sobrecarga do metodo KeyDowb</param>
+        /// <param name="e">o evento em si</param>
+        public static void DisableTabInGrid(object sender, KeyEventArgs e)
+        {
+            DataGridView dgv = (sender as DataGridView);
+            if (e.KeyCode == Keys.Tab)
+            {
+                dgv.Enabled = false;
+                dgv.GetNextControl(dgv, true).Focus();
+                dgv.Enabled = true;
+                e.Handled = true;
+            }
+        }
+
         public static void Peso(KeyPressEventArgs e, object sender)
         {
 

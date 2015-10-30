@@ -78,49 +78,54 @@ namespace Mike.Utilities.Desktop
             txt.Text = string.Empty;
 
         }
-        /*public static void EsconderLinhaComUmaCor(this DataGridView dgv, Color color, string coluna)
+        public static TextBox ValidarCampos(this TextBox[] txtArray, string textoAviso = "Todos os campos em amarelo são obrigatórios.", bool exibirMensagem = true)
         {
+            var lista = txtArray.ToList().Where(c => c.BackColor == Color.Yellow && c.Text.Trim() == "");
+            if (exibirMensagem == true)
+            {
+                DialogMessage.MessageFullComButtonOkIconeDeInformacao(textoAviso, "Aviso");
+            }
+            return lista.FirstOrDefault();
+        }
 
-            try
-            {
-                int contador = 0;
-                foreach (DataGridViewRow row in dgv.Rows)
-                {
-                    if (Convert.ToInt32(row.Cells["Preço"].Value) <= 0)
-                    {
-                        dgv.Rows[contador].Cells["Preço"].Style.BackColor = Color.Yellow;
-                        dgv.Rows[contador].Cells["Preço"].Style.ForeColor = Color.Yellow;
-                        dgv.Rows[contador].Cells["Preço"].Style.SelectionBackColor = Color.Yellow;
-                        dgv.Rows[contador].Cells["Preço"].Style.SelectionForeColor = Color.Yellow;
-                        //dgv.Rows[contador].Cells["Estoque"].Style.BackColor = Color.Yellow;
-                        //dgv.Rows[contador].Cells["Estoque"].Style.ForeColor = Color.Yellow;
-                        //dgv.Rows[contador].Cells["Estoque"].Style.SelectionBackColor = Color.Yellow;
-                        //dgv.Rows[contador].Cells["Estoque"].Style.SelectionForeColor = Color.Yellow;
-                    }
-                    else
-                    {
-                        dgv.Rows[contador].Cells["Preço"].Style.BackColor = Color.White;
-                        dgv.Rows[contador].Cells["Preço"].Style.ForeColor = Color.Black;
-                        dgv.Rows[contador].Cells["Preço"].Style.SelectionBackColor = Color.Yellow;
-                        dgv.Rows[contador].Cells["Preço"].Style.SelectionForeColor = Color.Black;
-                        //dgv.Rows[contador].Cells["Estoque"].Style.BackColor = Color.White;
-                        //dgv.Rows[contador].Cells["Estoque"].Style.ForeColor = Color.Black;
-                        //dgv.Rows[contador].Cells["Estoque"].Style.SelectionBackColor = Color.Yellow;
-                        //dgv.Rows[contador].Cells["Estoque"].Style.SelectionForeColor = Color.Black;
-                    }
-                    contador++;
-                }
-            }
-            catch (CustomException erro)
-            {
-                throw new CustomException(erro.Message);
-            }
-            catch (Exception erro)
-            {
-                throw new Exception(erro.Message);
-            }
-
-        }*/
+        public static void PadronizarGrid(this DataGridView dgv)
+        {
+            DataGridViewCellStyle cellStyle = new DataGridViewCellStyle();
+            DataGridViewCellStyle headerStyle = new DataGridViewCellStyle();
+            dgv.AllowDrop = true;
+            dgv.AllowUserToAddRows = false;
+            dgv.AllowUserToDeleteRows = false;
+            dgv.AllowUserToResizeColumns = false;
+            dgv.AllowUserToResizeRows = false;
+            dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dgv.BackgroundColor = System.Drawing.Color.White;
+            cellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            cellStyle.BackColor = System.Drawing.Color.White;
+            cellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            cellStyle.ForeColor = System.Drawing.Color.Black;
+            cellStyle.SelectionBackColor = System.Drawing.Color.Yellow;
+            cellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            cellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dgv.DefaultCellStyle = cellStyle;
+            dgv.ColumnHeadersHeight = 40;
+            dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            headerStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            headerStyle.BackColor = System.Drawing.SystemColors.Window;
+            headerStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            headerStyle.ForeColor = System.Drawing.Color.Black;
+            headerStyle.SelectionBackColor = System.Drawing.Color.White;
+            headerStyle.SelectionForeColor = System.Drawing.Color.Black;
+            headerStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dgv.ColumnHeadersDefaultCellStyle = headerStyle;
+            dgv.MultiSelect = false;
+            dgv.ReadOnly = true;
+            dgv.RowHeadersVisible = false;
+            dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dgv.TabIndex = 0;
+            dgv.TabStop = false;
+           
+        }
         public static DateTime DataNoFormatoDate(this DateTime dtt)
         {
             return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
