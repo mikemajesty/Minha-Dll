@@ -78,7 +78,7 @@ namespace Mike.Utilities.Desktop
 
         }
 
-        public static decimal GetValorNaComanda(ListView ltv,int indexDaColunaDoValorASerSomado,Label lblParaExibirValor)
+        public static decimal GetValorNoListView(ListView ltv,int indexDaColunaDoValorASerSomado,Label lblParaExibirValor)
         {
 
             try
@@ -106,7 +106,7 @@ namespace Mike.Utilities.Desktop
             }
 
         }
-        public static decimal GetValorLucroTotal(ListView ltv,int indexDaColunaOndeOLucroEsta)
+        public static decimal SomarValorNoListView(ListView ltv,int indexDaColunaOndeOLucroEsta)
         {
 
             try
@@ -190,53 +190,6 @@ namespace Mike.Utilities.Desktop
             }
 
         }
-        /*private static void AdicionarItensNoListView(ListView ltv, IQueryable<dynamic> _venda)
-        {
-
-            try
-            {
-
-                ListViewItem listView;
-
-
-                if (ltv.Columns.Count == 0)
-                {
-                    ltv.Columns.Add("Nome").Width = 160;
-                    ltv.Columns.Add("Codigo").Width = 106;
-                    ltv.Columns.Add("Quantidade").Width = 76;
-                    ltv.Columns.Add("Total").Width = 70;
-                    ltv.Columns.Add("LucroTotal").Width = 0;
-
-                }
-
-                foreach (var item in _venda)
-                {
-                    listView = new ListViewItem(item.Nome);
-                    listView.SubItems.Add(item.Codigo);
-                    if (item.Quantidade == 0)
-                    {
-                        listView.SubItems.Add("Peso");
-                    }
-                    else
-                    {
-                        listView.SubItems.Add("" + item.Quantidade);
-                    }
-                    listView.SubItems.Add("" + item.Total);
-                    listView.SubItems.Add("" + item.LucroTotal);
-                    ltv.Items.Add(listView);
-                }
-
-
-            }
-            catch (CustomException erro)
-            {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(erro.Message, "Aviso");
-            }
-            catch (Exception erro)
-            {
-                DialogMessage.MessageComButtonOkIconeErro(erro.Message, "Erro");
-            }
-
-        }*/
+       
     }
 }

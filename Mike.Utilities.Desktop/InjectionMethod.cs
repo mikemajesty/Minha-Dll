@@ -58,6 +58,19 @@ namespace Mike.Utilities.Desktop
             }
 
         }
+        public static decimal SomarColunaDoGrid(this DataGridView dgv,string nomeDaColuna)
+        {
+            decimal valorTotal = 0;
+            if (dgv.Rows.Count > 0)
+            {
+                for (int contador = 0; contador < dgv.Rows.Count; ++contador)
+                {                  
+                    valorTotal += Convert.ToDecimal(dgv.Rows[contador].Cells[nomeDaColuna].Value);
+                }
+                dgv.Text = valorTotal.ToString("C2");
+            }
+            return valorTotal;
+        }
         public static int ErroCustomForTernary(this int number, string erro)
         {
             throw new CustomException(erro);
@@ -78,15 +91,15 @@ namespace Mike.Utilities.Desktop
             txt.Text = string.Empty;
 
         }
-        public static TextBox ValidarCampos(this TextBox[] txtArray, string textoAviso = "Todos os campos em amarelo são obrigatórios.", bool exibirMensagem = true)
+        public static TextBox ValidarCampos(this TextBox[] txtArray, string textoAviso = "Todos os campos em amarelo são obrigatórios.", bool exibirMensagem = true,Color? cor = null)
         {
-            var lista = txtArray.ToList().Where(c => c.BackColor == Color.Yellow && c.Text.Trim() == "");
-            if (exibirMensagem == true)
+            var lista = txtArray.ToList().Where(c => cor == null ? c.BackColor == Color.Yellow && c.Text.Trim() == "" : c.BackColor == cor && c.Text.Trim() == "");
             {
                 DialogMessage.MessageFullComButtonOkIconeDeInformacao(textoAviso, "Aviso");
             }
             return lista.FirstOrDefault();
         }
+        public static void LimparTxtList(this List<TextBox> txtList) => txtList.ForEach(c => c.Text = string.Empty);
 
         public static void PadronizarGrid(this DataGridView dgv)
         {

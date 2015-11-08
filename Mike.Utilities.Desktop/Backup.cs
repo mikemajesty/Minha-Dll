@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Data.Entity;
+using System.Windows.Forms;
 
 namespace Mike.Utilities.Desktop
 {
@@ -15,15 +16,9 @@ namespace Mike.Utilities.Desktop
                                  , DateTime.Now.Day.ToString("00"),
                                   DateTime.Now.Month.ToString("00"),
                                   DateTime.Now.Year.ToString("0000"));
-                string caminho = Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments) + @"\" + folder + subFolder).FullName;
-
+                string caminho = Application.StartupPath + @"\" + folder + subFolder;
                 Directory.CreateDirectory(caminho);
-                string sql = "BACKUP DATABASE " + data.Database.Connection.Database + " to Disk = '"
-                    + caminho + @"\"
-                   + data.Database.Connection.Database +
-                   ".bak' WITH FORMAT, MEDIANAME = 'Z_SQLServerBackups', NAME = 'Full Backup of jiradb'";
-
-                sql = sql.Replace(@"\\", @"\");
+                string sql = "BACKUP DATABASE " + data.Database.Connection.Database + @" to Disk = '" + caminho + @"\" + data.Database.Connection.Database + ".bak' WITH FORMAT, MEDIANAME = 'Mike Rodrigues De Lima', NAME = 'Full Backup'";
                 var dados = data.Database.ExecuteSqlCommand(transactionalBehavior: System.Data.Entity.TransactionalBehavior.DoNotEnsureTransaction, sql: sql);
                 return dados;
             }
