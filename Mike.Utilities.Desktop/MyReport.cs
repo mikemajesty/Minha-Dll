@@ -37,11 +37,11 @@ namespace Mike.Utilities.Desktop
             }
             catch (CustomException error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new CustomException(error.Message);
             }
             catch (Exception error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new Exception(error.Message);
             }
 
 
@@ -65,11 +65,11 @@ namespace Mike.Utilities.Desktop
             }
             catch (CustomException error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new CustomException(error.Message);
             }
             catch (Exception error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new Exception(error.Message);
             }
 
 
@@ -93,11 +93,11 @@ namespace Mike.Utilities.Desktop
             }
             catch (CustomException error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new CustomException(error.Message);
             }
             catch (Exception error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new Exception(error.Message);
             }
 
 
@@ -135,14 +135,14 @@ namespace Mike.Utilities.Desktop
             }
             catch (CustomException error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new CustomException(error.Message);
             }
             catch (Exception error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new Exception(error.Message);
             }
 
-           
+
         }
         public void GerarRelatoriosApenasComParametrosWord(List<ReportParameter> listParameter, string nomeRelatorio = "Relatorio")
         {
@@ -162,11 +162,11 @@ namespace Mike.Utilities.Desktop
             }
             catch (CustomException error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new CustomException(error.Message);
             }
             catch (Exception error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new Exception(error.Message);
             }
 
 
@@ -188,11 +188,11 @@ namespace Mike.Utilities.Desktop
             }
             catch (CustomException error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new CustomException(error.Message);
             }
             catch (Exception error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new Exception(error.Message);
             }
 
         }
@@ -223,14 +223,20 @@ namespace Mike.Utilities.Desktop
             }
             catch (CustomException error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new CustomException(error.Message);
             }
             catch (Exception error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new Exception(error.Message);
             }
 
+
+
+
+
         }
+        
+       
         public void GerarRelatoriosComParametrosDefinidosNaQueryPDF(string nomeRelatorio = "Relatorio")
         {
 
@@ -247,13 +253,12 @@ namespace Mike.Utilities.Desktop
             }
             catch (CustomException error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new CustomException(error.Message);
             }
             catch (Exception error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new Exception(error.Message);
             }
-
 
         }
         public void GerarRelatoriosComParametrosDefinidosNaQueryWord(string nomeRelatorio = "Relatorio")
@@ -272,11 +277,11 @@ namespace Mike.Utilities.Desktop
             }
             catch (CustomException error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new CustomException(error.Message);
             }
             catch (Exception error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new Exception(error.Message);
             }
         }
         public void GerarRelatoriosComParametrosDefinidosNaQueryExcel(string nomeRelatorio = "Relatorio")
@@ -295,11 +300,11 @@ namespace Mike.Utilities.Desktop
             }
             catch (CustomException error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new CustomException(error.Message);
             }
             catch (Exception error)
             {
-                DialogMessage.MessageFullComButtonOkIconeDeInformacao(message: error.Message, title: "Aviso");
+                throw new Exception(error.Message);
             }
         }
     }
