@@ -170,7 +170,7 @@ namespace Mike.Utilities.Desktop
                     estoqueList.Add(new BaixarEstoque()
                     {
                         Codigo = lstItem.SubItems[1].Text,
-                        Quantidade = lstItem.SubItems[2].Text != "Peso" ? Convert.ToInt32(lstItem.SubItems[2].Text) : 0,
+                        Quantidade = lstItem.SubItems[2].Text.Contains("Kg") == false ? Convert.ToInt32(lstItem.SubItems[2].Text) : -1,
                         LucroTotal = decimal.Parse(lstItem.SubItems[4].Text),
                         ValorTotal = decimal.Parse(lstItem.SubItems[3].Text)
                     });

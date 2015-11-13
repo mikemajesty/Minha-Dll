@@ -10,7 +10,7 @@ namespace Mike.Utilities.Desktop
 {
     public static class SaveErroInTxt
     {
-
+        private static SalvarNoDropBox salvarNoDropBox;
         public static bool RecordInTxtWithDialog()
         {
             try
@@ -38,7 +38,7 @@ namespace Mike.Utilities.Desktop
                 mike.AppendLine("\nSource: " + erro.Source);
                 mike.AppendLine("\nStackTrace: " + erro.StackTrace);
                 mike.AppendLine("\nTargetSite: " + erro.TargetSite);
-
+                mike.AppendLine("\nType: " + erro.GetType());
                 string folder = @"ApplcationErrors\" + ClasseComOErro;
                 string subFolder = string.Format("{0}-{1}-{2}", DateTime.Now.Day.ToString("00"), DateTime.Now.Month.ToString("00"), DateTime.Now.Year.ToString("0000"));
                 if (!Directory.Exists(folder))
@@ -53,15 +53,21 @@ namespace Mike.Utilities.Desktop
                     }
                     Directory.CreateDirectory(folder);
                     string hora = string.Format(@"{0}\{8}\Data {1}-{2}-{3} - Hora [{4}-{5}-{6}]{7}", folder, DateTime.Now.Day.ToString("00"), DateTime.Now.Month.ToString("00"), DateTime.Now.Year.ToString("0000"), DateTime.Now.Hour.ToString("00"), DateTime.Now.Minute.ToString("00"), DateTime.Now.Second.ToString("00"), ".txt", subFolder);
+                    salvarNoDropBox = new SalvarNoDropBox(Properties.Settings.Default.NomePadaria + "/" + ClasseComOErro,DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss_") + ".txt", erro);
+                    salvarNoDropBox.Executar();
                     File.AppendAllText(hora, mike.ToString(), Encoding.UTF8);
                 }
                 else
                 {
+
+                   
                     if (!Directory.Exists(folder + @"\" + subFolder))
                     {
                         Directory.CreateDirectory(folder + @"\" + subFolder);
                     }
                     string hora = string.Format(@"{0}\{8}\Data {1}-{2}-{3} - Hora [{4}-{5}-{6}]{7}", folder, DateTime.Now.Day.ToString("00"), DateTime.Now.Month.ToString("00"), DateTime.Now.Year.ToString("0000"), DateTime.Now.Hour.ToString("00"), DateTime.Now.Minute.ToString("00"), DateTime.Now.Second.ToString("00"), ".txt", subFolder);
+                    salvarNoDropBox = new SalvarNoDropBox(Properties.Settings.Default.NomePadaria+"/"+ClasseComOErro,DateTime.Now.ToString("dd-MM-yyyy_HH-mm-ss_")+".txt", erro);
+                    salvarNoDropBox.Executar();
                     File.AppendAllText(hora, mike.ToString(), Encoding.UTF8);
                 }
                 return true;
@@ -73,29 +79,6 @@ namespace Mike.Utilities.Desktop
                 throw new Exception(Erro.Message);
             }
         }
-        /*
-         * salva no disco local c
-         string root = @"C:\Temp";
-string subdir = @"C:\Temp\Mahesh";
-// If directory does not exist, create it. 
-if (!Directory.Exists(root))
-{
-    Directory.CreateDirectory(root);
-}
 
-The CreateDirectory is also used to create a sub directory. All you have to do is to specify the path of the directory in which this subdirectory will be created in. The following code snippet creates a Mahesh subdirectory in C:\Temp directory.   
-
-// Create sub directory
-if (!Directory.Exists(subdir))
-{
-    Directory.CreateDirectory(subdir);
-}
-
-         
-         
-         
-         
-         
-         */
     }
 }

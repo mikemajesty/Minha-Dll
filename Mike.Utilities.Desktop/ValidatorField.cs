@@ -103,18 +103,27 @@ namespace Mike.Utilities.Desktop
 
         public static void Peso(KeyPressEventArgs e, object sender)
         {
-
-            if ((sender as TextBox).Text.Length <= 5)
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)44 && (sender as TextBox).Text.Contains(","))
             {
-
-
+                e.Handled = true;
+            }
+            else if ((sender as TextBox).Text.Length <= 5 && e.KeyChar != (char)Keys.Enter)
+            {
+                if ((sender as TextBox).Text.EndsWith(","))
+                {
+                    if ((sender as TextBox).Text.EndsWith(","))
+                    {
+                        (sender as TextBox).Text.Remove((sender as TextBox).Text.Length - 1, 1);
+                    }
+                }
                 string n = string.Empty;
                 double v = 0;
 
                 n = (sender as TextBox).Text.Replace(",", "").Replace(".", "");
                 if (n.Equals(""))
+                {
                     n = "00";
-
+                }
                 n = n.PadLeft(4, '0');
                 if (n.Length < 3 & n.Substring(0, 1) == "0")
                     n = n.Substring(1, n.Length - 1);

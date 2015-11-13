@@ -44,6 +44,69 @@ namespace Mike.Utilities.Desktop
         {
             return txt.First().ToString().ToUpper() + String.Join("", txt.Skip(1)).ToLower();
         }
+        public static bool ValidarCPF(this string cpf)
+        {
+            string valor = cpf.Replace(".", ""); valor = valor.Replace("-", "");
+            if (valor.Length != 11)
+            {
+                return false;
+            }
+            bool igual = true;
+            for (int i = 1; i < 11 && igual; i++)
+            {
+                if (valor[i] != valor[0])
+                {
+                    igual = false;
+                }
+            }
+
+            if (igual || valor == "12345678909")
+            {
+                return false;
+            }
+            int[] numeros = new int[11];
+            for (int i = 0; i < 11; i++)
+            {
+                numeros[i] = int.Parse(valor[i].ToString());
+            }
+            int soma = 0;
+            for (int i = 0; i < 9; i++)
+            {
+                soma += (10 - i) * numeros[i];
+            }
+            int resultado = soma % 11;
+            if (resultado == 1 || resultado == 0)
+            {
+                if (numeros[9] != 0)
+                {
+                    return false;
+                }
+            }
+            else if (numeros[9] != 11 - resultado)
+            {
+                return false;
+            }
+            soma = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                soma += (11 - i) * numeros[i];
+            }
+            resultado = soma % 11;
+            if (resultado == 1 || resultado == 0)
+            {
+                if (numeros[10] != 0)
+                {
+                    return false;
+                }
+            }
+            else if (numeros[10] != 11 - resultado)
+            {
+                return false;
+            }
+            return true;
+
+        }
+
         public static char MostrarSenha(this TextBox txt)
         {
             return txt.PasswordChar = '\0';
@@ -53,18 +116,16 @@ namespace Mike.Utilities.Desktop
             foreach (var item in tamanhoGrid)
             {
                 dgv.Columns[item.ColunaNome].Width = item.Tamanho;
-
-
             }
 
         }
-        public static decimal SomarColunaDoGrid(this DataGridView dgv,string nomeDaColuna)
+        public static decimal SomarColunaDoGrid(this DataGridView dgv, string nomeDaColuna)
         {
             decimal valorTotal = 0;
             if (dgv.Rows.Count > 0)
             {
                 for (int contador = 0; contador < dgv.Rows.Count; ++contador)
-                {                  
+                {
                     valorTotal += Convert.ToDecimal(dgv.Rows[contador].Cells[nomeDaColuna].Value);
                 }
                 dgv.Text = valorTotal.ToString("C2");
@@ -87,11 +148,9 @@ namespace Mike.Utilities.Desktop
         }
         public static void LimparTxt(this TextBox txt)
         {
-
             txt.Text = string.Empty;
-
         }
-        public static TextBox ValidarCampos(this TextBox[] txtArray, string textoAviso = "Todos os campos em amarelo são obrigatórios.", bool exibirMensagem = true,Color? cor = null)
+        public static TextBox ValidarCampos(this TextBox[] txtArray, string textoAviso = "Todos os campos em amarelo são obrigatórios.", bool exibirMensagem = true, Color? cor = null)
         {
             var lista = txtArray.ToList().Where(c => cor == null ? c.BackColor == Color.Yellow && c.Text.Trim() == "" : c.BackColor == cor && c.Text.Trim() == "");
             {
@@ -137,7 +196,7 @@ namespace Mike.Utilities.Desktop
             dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             dgv.TabIndex = 0;
             dgv.TabStop = false;
-           
+
         }
         public static DateTime DataNoFormatoDate(this DateTime dtt)
         {
