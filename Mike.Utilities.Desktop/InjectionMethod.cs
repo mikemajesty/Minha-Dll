@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+
 namespace Mike.Utilities.Desktop
 {
     public static class InjectionMethod
@@ -234,6 +236,37 @@ namespace Mike.Utilities.Desktop
 
 
         }
-
+        public static string GetFullPath(this string arquivoComExtensao)
+        {
+            return Directory.GetFiles(System.IO.Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath)), arquivoComExtensao, SearchOption.AllDirectories).FirstOrDefault();
+        }
+        public static void MoveToUp(this DataGridView dgv)
+        {
+            if (dgv.Rows.Count > 0)
+            {
+                int indexUp = dgv.SelectedRows[0].Index;
+                if (indexUp > 0)
+                {
+                    dgv.Rows[indexUp].Selected = false;
+                    dgv.Rows[indexUp - 1].Selected = true;
+                }
+            }
+        }
+        public static void MoveToDown(this DataGridView dgv)
+        {
+            if (dgv.Rows.Count > 0)
+            {
+                int indexDown = dgv.SelectedRows[0].Index;
+                if (indexDown >= 0 && indexDown < dgv.Rows.Count - 1)
+                {
+                    dgv.Rows[indexDown].Selected = false;
+                    dgv.Rows[indexDown + 1].Selected = true;
+                }
+            } 
+        }
+        public static object GetSelectRow(this DataGridView dgv,int columIndex, string columName)
+        {
+            return dgv.SelectedRows[columIndex].Cells[columName].Value.ToString();
+        }
     }
 }
