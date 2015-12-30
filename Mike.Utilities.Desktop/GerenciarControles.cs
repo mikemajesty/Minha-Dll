@@ -35,6 +35,8 @@ namespace Mike.Utilities.Desktop
         /// <param name="location">Localização a ser atribuida ao GroupBox</param>
         public static void MudarPosicao(GroupBox gpb, Point location) => gpb.Location = location;
         public static void DesabilitarOuHabilitar(GroupBox gpb, bool desabilitarOuHabilitar = false) => gpb.Enabled = desabilitarOuHabilitar;
+
+        public static void DesabilitarOuHabilitarMuitos(List<GroupBox> gpb, bool desabilitarOuHabilitar = false) => gpb.ForEach(c => c.Enabled = desabilitarOuHabilitar);
     }
     public static class GerenciarTextBox
     {
@@ -66,6 +68,7 @@ namespace Mike.Utilities.Desktop
         /// <param name="location">A localização a ser adicionado</param>
         public static void MudarPosicao(TextBox txt, Point location) => txt.Location = location;
         public static void DesabilitarOuHabilitar(TextBox txt, bool desabilitarOuHabilitar = false) => txt.Enabled = desabilitarOuHabilitar;
+        public static void DesabilitarOuHabilitarMuitos(List<TextBox> gpb, bool desabilitarOuHabilitar = false) => gpb.ForEach(c => c.Enabled = desabilitarOuHabilitar);
     }
     public static class GerenciarButton
     {
@@ -97,13 +100,14 @@ namespace Mike.Utilities.Desktop
         /// <param name="location">A localização a ser atribuida</param>
         public static void MudarPosicao(Button btn, Point location) => btn.Location = location;
         public static void DesabilitarOuHabilitar(Button btn, bool desabilitarOuHabilitar = false) => btn.Enabled = desabilitarOuHabilitar;
+        public static void DesabilitarOuHabilitarMuitos(List<Button> gpb, bool desabilitarOuHabilitar = false) => gpb.ForEach(c => c.Enabled = desabilitarOuHabilitar);
     }
     public static class GerenciarComboBox
     {
         private const bool Mostrar = true;
         private const bool Esconder = false;
-
-        public static void DesabilitarOuHabilitar(GroupBox gpp, bool desabilitarOuHabilitar = false) => gpp.Enabled = desabilitarOuHabilitar;
+        public static void DesabilitarOuHabilitarMuitos(List<ComboBox> gpb, bool desabilitarOuHabilitar = false) => gpb.ForEach(c => c.Enabled = desabilitarOuHabilitar);
+        public static void DesabilitarOuHabilitar(ComboBox gpp, bool desabilitarOuHabilitar = false) => gpp.Enabled = desabilitarOuHabilitar;
         /// <summary>
         /// Metodo para esconder ou mostrar um ComboBox
         /// </summary>
