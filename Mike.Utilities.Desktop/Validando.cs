@@ -6,7 +6,8 @@ namespace Mike.Utilities.Desktop
     {
         public  bool ValidarCPF( string cpf)
         {
-            string valor = cpf.Replace(".", ""); valor = valor.Replace("-", "");
+            string valor = cpf.Replace(".", "");
+            valor = valor.Replace("-", "");
             if (valor.Length != 11)
             {
                 return false;

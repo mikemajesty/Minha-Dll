@@ -34,7 +34,7 @@ namespace Mike.Utilities.Desktop
         /// <param name="gpb">Nome do GrouoBox</param>
         /// <param name="location">Localização a ser atribuida ao GroupBox</param>
         public static void MudarPosicao(GroupBox gpb, Point location) => gpb.Location = location;
-
+        public static void DesabilitarOuHabilitar(GroupBox gpb, bool desabilitarOuHabilitar = false) => gpb.Enabled = desabilitarOuHabilitar;
     }
     public static class GerenciarTextBox
     {
@@ -65,6 +65,7 @@ namespace Mike.Utilities.Desktop
         /// <param name="txt">O nome do TextBox</param>
         /// <param name="location">A localização a ser adicionado</param>
         public static void MudarPosicao(TextBox txt, Point location) => txt.Location = location;
+        public static void DesabilitarOuHabilitar(TextBox txt, bool desabilitarOuHabilitar = false) => txt.Enabled = desabilitarOuHabilitar;
     }
     public static class GerenciarButton
     {
@@ -95,11 +96,14 @@ namespace Mike.Utilities.Desktop
         /// <param name="btn">Nome do Button</param>
         /// <param name="location">A localização a ser atribuida</param>
         public static void MudarPosicao(Button btn, Point location) => btn.Location = location;
+        public static void DesabilitarOuHabilitar(Button btn, bool desabilitarOuHabilitar = false) => btn.Enabled = desabilitarOuHabilitar;
     }
     public static class GerenciarComboBox
     {
         private const bool Mostrar = true;
         private const bool Esconder = false;
+
+        public static void DesabilitarOuHabilitar(GroupBox gpp, bool desabilitarOuHabilitar = false) => gpp.Enabled = desabilitarOuHabilitar;
         /// <summary>
         /// Metodo para esconder ou mostrar um ComboBox
         /// </summary>
@@ -125,5 +129,9 @@ namespace Mike.Utilities.Desktop
         /// <param name="btn">Nome do ComboBox</param>
         /// <param name="location">A localização a ser atribuida</param>
         public static void MudarPosicao(ComboBox btn, Point location) => btn.Location = location;
+    }
+    public static class GerenciarForm
+    {
+        public static void MudarTamanho(Form frm, Size size) => frm.Size = size;
     }
 }
