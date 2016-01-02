@@ -44,7 +44,7 @@ namespace Mike.Utilities.Desktop
         }
         public static string UpperCaseOnlyFirst(this string txt)
         {
-            return txt.First().ToString().ToUpper() + String.Join("", txt.Skip(1)).ToLower();
+            return txt != "" ? txt.First().ToString().ToUpper() + String.Join("", txt.Skip(1)).ToLower():"";
         }
         public static bool ValidarCPF(this string cpf)
         {
