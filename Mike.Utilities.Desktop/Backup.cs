@@ -26,9 +26,6 @@ namespace Mike.Utilities.Desktop
             {
                 return 0;
             }
-          
-
-
         }
     }
 }
