@@ -7,7 +7,6 @@ namespace Mike.Utilities.Desktop
     {
         public static string CalcularPorcentagem(TextBox txtPrecoCompra, TextBox txtPrecoVenda)
         {
-
             try
             {
                 decimal _precoVenda = 0, _preconCompra = 0;
@@ -69,7 +68,6 @@ namespace Mike.Utilities.Desktop
             {
                 throw new Exception(erro.Message);
             }
-
         }
     }
 }
